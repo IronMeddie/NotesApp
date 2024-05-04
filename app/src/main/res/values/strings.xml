@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Notes</string>
+    <string name="unknown_time">unknown</string>
+    <string name="your_notes">Your notes</string>
+    <string name="InvalidNoteExeption">Both the title and the description cannot be empty</string>
+    <string name="cant_save">Couldn\'t save note</string>
+    <string name="enter_title">Enter title</string>
+    <string name="enter_description">Enter description</string>
+    <string name="note_deleted">Note deleted</string>
+    <string name="undo">Undo</string>
+    <string name="title_order">Title</string>
+    <string name="date_order">Date</string>
+    <string name="color_order">Color</string>
+    <string name="ascending_order">Ascending</string>
+    <string name="descending_order">Descending</string>
 </resources>

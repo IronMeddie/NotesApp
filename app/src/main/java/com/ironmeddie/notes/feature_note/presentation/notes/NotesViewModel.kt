@@ -25,12 +25,9 @@ class NotesViewModel @Inject constructor(private val useCases: NoteUseCases): Vi
     private var recentlyDeletedNote: Note? = null
 
     private var getNotesJob: Job? = null
-
-
     init {
         getNotes(NoteOrder.Date(OrderType.Descending))
     }
-
     fun onEvent(event: NotesEvent){
         when(event){
             is NotesEvent.Order->{
@@ -74,7 +71,4 @@ class NotesViewModel @Inject constructor(private val useCases: NoteUseCases): Vi
             Log.d("LogCheck", "value updated")
         }.launchIn(viewModelScope)
     }
-
-
-
 }

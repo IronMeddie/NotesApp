@@ -12,22 +12,14 @@ private val DarkColorPalette = darkColors(
     background = DarkGray,
     onBackground = Color.White,
     surface = LightBlue,
-    onSurface = DarkGray
+    onSurface = DarkGray,
+    secondary = LightGrey
 )
 
 private val LightColorPalette = lightColors(
-//    primary = Purple500,
-//    primaryVariant = Purple700,
-//    secondary = Teal200
-
-    /* Other default colors to override
-    background = Color.White,
-    surface = Color.White,
-    onPrimary = Color.White,
-    onSecondary = Color.Black,
-    onBackground = Color.Black,
-    onSurface = Color.Black,
-    */
+    primary = Color.Black,
+    primaryVariant = DarkGray,
+    secondary = LightGrey
 )
 
 @Composable
@@ -37,7 +29,6 @@ fun NotesTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable 
     } else {
         LightColorPalette
     }
-
     MaterialTheme(
         colors = colors,
         typography = Typography,
