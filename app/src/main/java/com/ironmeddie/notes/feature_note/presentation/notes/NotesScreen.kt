@@ -26,6 +26,8 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Reorder
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.SearchOff
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -37,6 +39,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.ironmeddie.notes.R
+import com.ironmeddie.notes.feature_note.presentation.add_note.components.TransparentHintTextField
 import com.ironmeddie.notes.feature_note.presentation.notes.components.NoteItem
 import com.ironmeddie.notes.feature_note.presentation.notes.components.OrderSection
 import com.ironmeddie.notes.feature_note.presentation.util.Screen
@@ -77,10 +80,21 @@ fun NotesScreen(
                     text = stringResource(R.string.your_notes),
                     style = MaterialTheme.typography.h4
                 )
-                IconButton(onClick = {
-                    viewModel.onEvent(NotesEvent.ToogleOrderSection)
-                }) {
-                    Icon(imageVector = Icons.Default.Reorder, contentDescription = "Sort")
+                Row {
+                    IconButton(onClick = {
+                        viewModel.onEvent(NotesEvent.ToogleSearchSection)
+                    }) {
+                        val icon =
+                            if (state.searchQuery.isEmpty()) Icons.Default.Search else Icons.Default.SearchOff
+                        val tint =
+                            if (state.searchQuery.isEmpty()) MaterialTheme.colors.primary else MaterialTheme.colors.error
+                        Icon(imageVector = icon, contentDescription = "Search", tint = tint)
+                    }
+                    IconButton(onClick = {
+                        viewModel.onEvent(NotesEvent.ToogleOrderSection)
+                    }) {
+                        Icon(imageVector = Icons.Default.Reorder, contentDescription = "Sort")
+                    }
                 }
             }
             AnimatedVisibility(
@@ -95,6 +109,21 @@ fun NotesScreen(
                 ) {
                     viewModel.onEvent(NotesEvent.Order(it))
                 }
+            }
+            AnimatedVisibility(
+                visible = state.isSerachFieldVisible,
+                enter = fadeIn() + slideInVertically(),
+                exit = fadeOut() + slideOutVertically()
+            ) {
+                TransparentHintTextField(
+                    text = state.searchQuery,
+                    hint = "Search",
+                    onValueChange = { viewModel.onEvent(NotesEvent.Search(it)) },
+                    onFocusChange = { },
+                    isHintVisible = state.searchQuery.isBlank(),
+                    textStyle = MaterialTheme.typography.body1,
+                    modifier = Modifier.fillMaxWidth()
+                )
             }
             Spacer(modifier = Modifier.height(16.dp))
             LazyColumn(modifier = Modifier.fillMaxWidth()) {

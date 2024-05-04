@@ -10,6 +10,7 @@ import com.ironmeddie.notes.feature_note.domain.models.InvalidNoteExeption
 import com.ironmeddie.notes.feature_note.domain.models.Note
 import com.ironmeddie.notes.feature_note.domain.use_case.NoteUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.appmetrica.analytics.AppMetrica
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
@@ -91,6 +92,7 @@ class AddNoteViewModel @Inject constructor(
                                 id = currentNoteId
                             )
                         )
+                        AppMetrica.reportEvent("New Note")
                         _eventFLow.emit(UiEvent.SaveNote)
                     } catch (e: InvalidNoteExeption) {
                         _eventFLow.emit(
