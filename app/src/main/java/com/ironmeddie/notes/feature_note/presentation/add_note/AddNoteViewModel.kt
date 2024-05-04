@@ -22,11 +22,6 @@ class AddNoteViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private val _title = mutableStateOf(
-        NoteTextFieldState()
-    )
-    val title: State<NoteTextFieldState> = _title
-
     private val _content = mutableStateOf(
         NoteTextFieldState()
     )
@@ -46,7 +41,6 @@ class AddNoteViewModel @Inject constructor(
                 viewModelScope.launch {
                     noteUseCases.getNoteByIdUseCase(it)?.also { note ->
                         currentNoteId = note.id
-                        _title.value = title.value.copy(text = note.title, isHintVisible = false)
                         _content.value =
                             content.value.copy(text = note.content, isHintVisible = false)
                         _color.value = note.color
@@ -58,15 +52,6 @@ class AddNoteViewModel @Inject constructor(
 
     fun onEvent(event: AddNoteEvent) {
         when (event) {
-            is AddNoteEvent.EnterTitle -> {
-                _title.value = title.value.copy(text = event.value)
-            }
-
-            is AddNoteEvent.ChangeFocusTitle -> {
-                _title.value =
-                    title.value.copy(isHintVisible = !event.focusState.isFocused && _title.value.text.isBlank())
-            }
-
             is AddNoteEvent.EnterContent -> {
                 _content.value = content.value.copy(text = event.value)
             }
@@ -85,7 +70,6 @@ class AddNoteViewModel @Inject constructor(
                     try {
                         noteUseCases.addNoteUseCase(
                             Note(
-                                title = title.value.text,
                                 content = content.value.text,
                                 timestamp = System.currentTimeMillis(),
                                 color = color.value,

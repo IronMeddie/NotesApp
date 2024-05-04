@@ -12,7 +12,6 @@ import com.ironmeddie.notes.feature_note.presentation.ui.theme.Violet
 data class Note(
     @PrimaryKey(autoGenerate = true)
     val id: Int?,
-    val title: String,
     val content: String,
     val color: Int,
     val timestamp: Long,

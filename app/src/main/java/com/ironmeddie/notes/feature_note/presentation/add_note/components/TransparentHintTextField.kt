@@ -27,9 +27,7 @@ fun TransparentHintTextField(
             onValueChange = onValueChange,
             singleLine = singleLine,
             textStyle = textStyle.copy(color = MaterialTheme.colors.onBackground),
-            modifier = Modifier
-                .fillMaxWidth()
-                .onFocusChanged { onFocusChange(it) })
+            modifier = Modifier.fillMaxWidth().onFocusChanged { onFocusChange(it) }.matchParentSize())
         if (isHintVisible) {
             Text(text = hint, style = textStyle, color = MaterialTheme.colors.onBackground)
         }

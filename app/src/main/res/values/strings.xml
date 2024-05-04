@@ -2,10 +2,9 @@
     <string name="app_name">Notes</string>
     <string name="unknown_time">unknown</string>
     <string name="your_notes">Your notes</string>
-    <string name="InvalidNoteExeption">Both the title and the description cannot be empty</string>
+    <string name="InvalidNoteExeption">The description cannot be empty</string>
     <string name="cant_save">Couldn\'t save note</string>
-    <string name="enter_title">Enter title</string>
-    <string name="enter_description">Enter description</string>
+    <string name="enter_description">Note</string>
     <string name="note_deleted">Note deleted</string>
     <string name="undo">Undo</string>
     <string name="title_order">Text</string>

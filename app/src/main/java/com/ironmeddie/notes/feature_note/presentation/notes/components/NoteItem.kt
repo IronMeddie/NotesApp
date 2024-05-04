@@ -3,9 +3,7 @@ package com.ironmeddie.notes.feature_note.presentation.notes.components
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -82,23 +80,13 @@ fun NoteItem(
                 fontSize = 12.sp,
                 color = MaterialTheme.colors.secondary
             )
-            if (note.title.isNotEmpty()) {
-                Text(
-                    text = note.title, style = MaterialTheme.typography.h6,
-                    color = MaterialTheme.colors.onSurface,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-                Spacer(modifier = Modifier.height(8.dp))
-            }
-            if (note.content.isNotEmpty()) {
-                Text(
-                    text = note.content, style = MaterialTheme.typography.body1,
-                    color = MaterialTheme.colors.onSurface,
-                    maxLines = 10,
-                    overflow = TextOverflow.Ellipsis
-                )
-            }
+            Text(
+                text = note.content, style = MaterialTheme.typography.body1,
+                color = MaterialTheme.colors.onSurface,
+                maxLines = 10,
+                overflow = TextOverflow.Ellipsis
+            )
+
         }
         IconButton(onClick = onDelete, modifier = Modifier.align(Alignment.BottomEnd)) {
             Icon(imageVector = Icons.Default.Delete, contentDescription = "Delete note")
@@ -109,7 +97,7 @@ fun NoteItem(
 @Preview(showBackground = true)
 @Composable
 private fun previewNoteItem() {
-    val note = Note(0, "Title", "Content", Note.noteColors[0].toArgb(), 456546)
+    val note = Note(0, "Content", Note.noteColors[0].toArgb(), 456546)
     NoteItem(note) {
 
     }

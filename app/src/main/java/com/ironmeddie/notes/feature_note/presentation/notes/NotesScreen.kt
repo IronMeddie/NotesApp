@@ -122,7 +122,9 @@ fun NotesScreen(
                     onFocusChange = { },
                     isHintVisible = state.searchQuery.isBlank(),
                     textStyle = MaterialTheme.typography.body1,
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(15.dp)
                 )
             }
             Spacer(modifier = Modifier.height(16.dp))

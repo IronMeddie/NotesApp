@@ -8,7 +8,7 @@ class AddNoteUseCase(private val repository: NoteRepository) {
 
     @Throws(InvalidNoteExeption::class)
     suspend operator fun invoke(note: Note){
-        if (note.title.isBlank() && note.content.isBlank()){
+        if (note.content.isBlank()){
             throw InvalidNoteExeption()
         }
         repository.insertNote(note)

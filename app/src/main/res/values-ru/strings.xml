@@ -3,10 +3,9 @@
     <string name="app_name">Заметки</string>
     <string name="unknown_time">время не определено</string>
     <string name="your_notes">Заметки</string>
-    <string name="InvalidNoteExeption">И заголовок и описание не могут быть пустыми</string>
+    <string name="InvalidNoteExeption">Заметка не может быть пустой</string>
     <string name="cant_save">Не удалось сохранить заметку</string>
-    <string name="enter_title">Заголовок</string>
-    <string name="enter_description">Описание</string>
+    <string name="enter_description">Заметка</string>
     <string name="undo">Вернуть</string>
     <string name="note_deleted">Заметка удалена</string>
     <string name="title_order">Содержание</string>

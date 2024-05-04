@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -51,7 +50,6 @@ fun AddNoteScreen(
     noteColor: Int,
     viewModel: AddNoteViewModel = hiltViewModel()
 ) {
-    val titleState = viewModel.title.value
     val contentState = viewModel.content.value
     val scaffoldState = rememberScaffoldState()
     val noteBackground = remember {
@@ -134,17 +132,6 @@ fun AddNoteScreen(
                         })
                 }
             }
-
-            Spacer(modifier = Modifier.height(16.dp))
-            TransparentHintTextField(
-                text = titleState.text,
-                hint = stringResource(R.string.enter_title),
-                onValueChange = { viewModel.onEvent(AddNoteEvent.EnterTitle(it)) },
-                onFocusChange = { viewModel.onEvent(AddNoteEvent.ChangeFocusTitle(it)) },
-                isHintVisible = titleState.isHintVisible,
-                singleLine = true,
-                textStyle = MaterialTheme.typography.h5
-            )
             Spacer(modifier = Modifier.height(16.dp))
             TransparentHintTextField(
                 text = contentState.text,
@@ -153,7 +140,7 @@ fun AddNoteScreen(
                 onFocusChange = { viewModel.onEvent(AddNoteEvent.ChangeFocusContent(it)) },
                 isHintVisible = contentState.isHintVisible,
                 textStyle = MaterialTheme.typography.body1,
-                modifier = Modifier.fillMaxHeight()
+                modifier = Modifier.fillMaxSize()
             )
         }
     }
