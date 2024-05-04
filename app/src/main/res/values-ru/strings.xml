@@ -14,4 +14,5 @@
     <string name="color_order">Цвет</string>
     <string name="ascending_order">По возрастанию</string>
     <string name="descending_order">По убыванию</string>
+    <string name="search">Поиск</string>
 </resources>

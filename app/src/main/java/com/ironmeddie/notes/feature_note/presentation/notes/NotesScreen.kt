@@ -87,7 +87,7 @@ fun NotesScreen(
                         val icon =
                             if (state.searchQuery.isEmpty()) Icons.Default.Search else Icons.Default.SearchOff
                         val tint =
-                            if (state.searchQuery.isEmpty()) MaterialTheme.colors.primary else MaterialTheme.colors.error
+                            if (state.searchQuery.isEmpty()) MaterialTheme.colors.onBackground else MaterialTheme.colors.error
                         Icon(imageVector = icon, contentDescription = "Search", tint = tint)
                     }
                     IconButton(onClick = {
@@ -117,7 +117,7 @@ fun NotesScreen(
             ) {
                 TransparentHintTextField(
                     text = state.searchQuery,
-                    hint = "Search",
+                    hint = stringResource(R.string.search),
                     onValueChange = { viewModel.onEvent(NotesEvent.Search(it)) },
                     onFocusChange = { },
                     isHintVisible = state.searchQuery.isBlank(),
