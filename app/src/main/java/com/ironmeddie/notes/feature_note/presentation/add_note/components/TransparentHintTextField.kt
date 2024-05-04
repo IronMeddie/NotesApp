@@ -31,7 +31,7 @@ fun TransparentHintTextField(
                 .fillMaxWidth()
                 .onFocusChanged { onFocusChange(it) })
         if (isHintVisible) {
-            Text(text = hint, style = textStyle, color = MaterialTheme.colors.onPrimary)
+            Text(text = hint, style = textStyle, color = MaterialTheme.colors.onBackground)
         }
     }
 }
