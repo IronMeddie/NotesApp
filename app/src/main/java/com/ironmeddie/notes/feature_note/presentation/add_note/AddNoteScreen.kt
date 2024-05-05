@@ -140,7 +140,8 @@ fun AddNoteScreen(
                 onFocusChange = { viewModel.onEvent(AddNoteEvent.ChangeFocusContent(it)) },
                 isHintVisible = contentState.isHintVisible,
                 textStyle = MaterialTheme.typography.body1,
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier.fillMaxSize(),
+                requestFocus = false
             )
         }
     }
