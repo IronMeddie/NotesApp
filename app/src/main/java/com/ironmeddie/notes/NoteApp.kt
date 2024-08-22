@@ -10,7 +10,7 @@ class NoteApp: Application() {
 
     override fun onCreate() {
         super.onCreate()
-        val config = AppMetricaConfig.newConfigBuilder("be0108f0-0196-4c38-bb0f-ee4de44ec72a").build()
+        val config = AppMetricaConfig.newConfigBuilder("key").build()
         AppMetrica.activate(this, config)
         AppMetrica.enableActivityAutoTracking(this)
     }
