@@ -12,6 +12,5 @@ class NoteApp: Application() {
         super.onCreate()
         val config = AppMetricaConfig.newConfigBuilder("key").build()
         AppMetrica.activate(this, config)
-        AppMetrica.enableActivityAutoTracking(this)
     }
 }
